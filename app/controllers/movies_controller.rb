@@ -1,7 +1,4 @@
 class MoviesController < ApplicationController
-  def create
-  end
-  
   def show
   end
 
