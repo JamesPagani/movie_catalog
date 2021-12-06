@@ -20,16 +20,22 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(title: params[:title])
 
     unless @movie.nil?
-      @movie.update(rating: params[:rating].to_f)
-
-      # Set the Genres (create them if they're not stored locally)
-      new_genres = Array.new()
-      params[:genres].each do |genre|
-        new_genres<<Genre.find_or_create_by(genre: genre)
+      unless params[:rating].nil?
+        @movie.update(rating: params[:rating].to_f)
       end
 
-      # Asign the genres
-      @movie.genres=new_genres
+      # Set the Genres (create them if they're not stored locally)
+      unless params[:genres].nil?
+        new_genres = Array.new()
+        
+        params[:genres].each do |genre|
+          new_genres<<Genre.find_or_create_by(genre: genre)
+        end
+        
+        # Asign the genres
+        @movie.genres=new_genres
+      end
+
     end
   end
 
