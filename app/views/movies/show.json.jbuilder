@@ -1,6 +1,6 @@
 if @movie.nil?
     json.error "The movie was not found. Perhaps there's a typo?"
-    json.response False
+    json.response "False"
 else
     genres_array = Array.new()
     @movie.genres.each do |g|

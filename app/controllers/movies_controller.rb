@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  # Find movie by title (Perform remote search if it isn't found locally)
   def show
     # Find Locally
     @movie = Movie.find_by(title: params[:title])
@@ -14,7 +15,9 @@ class MoviesController < ApplicationController
     end
   end
 
+  # Update the genres and rating of a movie
   def update
+    
   end
 
   def find_remote(t)
